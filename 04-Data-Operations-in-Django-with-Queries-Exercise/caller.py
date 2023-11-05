@@ -98,7 +98,7 @@ def increase_room_capacity():
         if not room.is_reserved:
             continue
 
-        if el == 0:
+        if el == 0 :
             room.capacity += room.id
         else:
             room.capacity += HotelRoom.objects.get(id=room.id - 1).capacity
