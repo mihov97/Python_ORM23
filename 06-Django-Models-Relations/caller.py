@@ -18,7 +18,7 @@ from main_app.models import Author, Book, Artist, Song, Product, Review, Driving
 def show_all_authors_with_their_books() -> str:
     authors_with_books = []
 
-    authors = Author.objects.all().order_by('id')  # better way to do it with prefetch
+    authors = Author.objects.all().order_by('id')  
 
     for author in authors:
         books = Book.objects.filter(author=author)
@@ -36,7 +36,7 @@ def delete_all_authors_without_books() -> None:
     Author.objects.filter(book__isnull=True).delete()
 
 
-def add_song_to_artist(artist_name: str, song_title: str) -> None:
+def add_song_to_artist(artist_name: str, song_title: str) :
     artist = Artist.objects.get(name=artist_name)
     song = Song.objects.get(title=song_title)
 
@@ -48,14 +48,14 @@ def get_songs_by_artist(artist_name: str) -> QuerySet[Song]:
     return artist.songs.all().order_by('-id')
 
 
-def remove_song_from_artist(artist_name: str, song_title: str) -> None:
+def remove_song_from_artist(artist_name: str, song_title: str) :
     artist = Artist.objects.get(name=artist_name)
     song = Song.objects.get(title=song_title)
 
     artist.songs.remove(song)
 
 
-def calculate_average_rating_for_product_by_name(product_name: str) -> float:
+def calculate_average_rating_for_product_by_name(product_name: str) :
     product = Product.objects.get(name=product_name)
     reviews = product.reviews.all()
 
@@ -64,18 +64,9 @@ def calculate_average_rating_for_product_by_name(product_name: str) -> float:
 
     return average_rating
 
-    # better way
-    # product = Product.objects.annotate(
-    #     total_ratings=Sum('review__rating'),
-    #     num_reviews=Count('review')
-    # ).get(name=product_name)
-    #
-    # average_rating = product.total_ratings / product.num_reviews
-    #
-    # return average_rating
+   
 
-
-def get_reviews_with_high_ratings(threshold: int) -> QuerySet[Review]:
+def get_reviews_with_high_ratings(threshold: int) :
     return Review.objects.filter(rating__gte=threshold)
 
 
