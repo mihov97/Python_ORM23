@@ -9,6 +9,7 @@ class CarAdmin(admin.ModelAdmin):
 
     @staticmethod
     def car_details(obj):
+        
         try:
             owner_name = obj.owner.name
         except AttributeError:
