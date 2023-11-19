@@ -1,4 +1,5 @@
 class RechargeEnergyMixin:
+    
     def recharge_energy(self, amount:int):
         self.energy += amount
 
