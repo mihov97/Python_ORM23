@@ -98,7 +98,6 @@ def register_car_by_owner(owner: Owner) -> str:
 
     car.owner = owner
     car.registration = registration
-
     car.save()
 
     registration.registration_date = date.today()
