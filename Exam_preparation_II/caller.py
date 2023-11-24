@@ -71,7 +71,6 @@ def apply_discounts():
     ).update(
         total_price=F('total_price') * 0.90
     )
-
     return f"Discount applied to {updated_orders} orders."
 
 def complete_order() -> str:
