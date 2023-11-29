@@ -37,6 +37,7 @@ def get_directors(search_name=None, search_nationality=None):
         return ""
 
     final_result = []
+    
     for director in all_directors:
         final_result.append(f"Director: {director.full_name}, nationality: {director.nationality}, "
                             f"experience: {director.years_of_experience}")
