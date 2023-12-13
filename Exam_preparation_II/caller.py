@@ -72,6 +72,7 @@ def apply_discounts():
     return f"Discount applied to {updated_orders} orders."
 
 def complete_order() -> str:
+    
     order = Order.objects.prefetch_related('products').filter(
         is_completed=False
     ).order_by(
