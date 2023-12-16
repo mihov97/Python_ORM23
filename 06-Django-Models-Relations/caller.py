@@ -93,6 +93,7 @@ def get_drivers_with_expired_licenses(due_date: date) -> QuerySet[Driver]:
 
 
 def register_car_by_owner(owner: Owner) -> str:
+    
     registration = Registration.objects.filter(car__isnull=True).first()
     car = Car.objects.filter(registration__isnull=True, owner=owner).first()
 
