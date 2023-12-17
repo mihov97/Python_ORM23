@@ -33,10 +33,13 @@ def get_loyal_profiles():
 
     return "\n".join(
         f"Profile: {p.full_name}, orders: {p.orders_count}"
+        
         for p in profiles
+    
     )
 
 def get_last_sold_products() -> str:
+    
     last_order = Order.objects.prefetch_related('products').last()
 
     if last_order is None or not last_order.products.exists():
@@ -94,6 +97,7 @@ def complete_order() -> str:
         product.save()
 
     order.is_completed = True
+    
     order.save()
 
     return f"Order has been completed!"
