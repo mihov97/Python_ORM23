@@ -4,6 +4,7 @@ from django.db.models import Q, Count, F
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "orm_skeleton.settings")
 django.setup()
+
 from populate_db import populate_model_with_data
 from main_app.models import Profile, Product, Order
 
@@ -22,7 +23,9 @@ def get_profiles(search_string:str = None):
 
     return "\n".join(
         f"Profile: {p.full_name}, email: {p.email}, phone number: {p.phone_number}, orders: {p.orders.count()}"
+        
         for p in profiles
+   
     )
 
 def get_loyal_profiles():
